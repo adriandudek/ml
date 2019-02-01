@@ -1,7 +1,8 @@
 clear ; close all; clc
 
 %% Load Data
-data = load('data.txt');
+%data = load('data2.txt');
+data  = randomset;
 X = data(:,[1,2,3]);  %with bias
 y = data(:,4);  %output
 
@@ -24,8 +25,8 @@ W = W';
 
 while size(temp = find((y'-sign( W'*X))!=0))>0
 	for i=temp
-		W  = W' + X'(i,:)*y(i)' 
-		W=W'
+		W  = W' + X'(i,:)*y(i)'; 
+		W=W';
 	endfor
 endwhile
 
@@ -34,6 +35,6 @@ endwhile
 a=-W(2)/W(3)
 b=-W(1)/W(3)
 
-fplot(@(x)a*x+b, [0 40]);
+fplot(@(x)a*x+b, [-100 100]);
   
 hold off;
